@@ -1,0 +1,31 @@
+<div class="default-page">
+
+  <h1>Create a new post: </h1>
+
+  <form action="/new" method="post">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title"><br><br>
+    <label for="text">Text:</label>
+    <textarea name="text" >Enter text here...</textarea><br><br>
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <h1>Posts: </h1>
+
+  <% if (posts) { %>
+    <ul>
+      <% posts.forEach(function(post) { %>
+        <li>
+          <p><%= post.title %></p>
+          <form action="/delete">
+            <input type="hidden" name="id" value="<%= post.id %>">
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+  
+</div>
